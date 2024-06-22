@@ -1,28 +1,5 @@
 ### Angular Tutorial: A Comprehensive Guide
 
-Welcome to the Angular tutorial. This guide will cover the most important and commonly used concepts in Angular, based on the latest stable version, Angular 15 (as of June 2024). 
-
-### Table of Contents
-1. Introduction to Angular
-2. Setting Up the Development Environment
-3. Creating a New Angular Application
-4. Angular Project Structure
-5. Components
-6. Modules
-7. Data Binding
-8. Directives
-9. Services and Dependency Injection
-10. Routing and Navigation
-11. Forms
-12. HTTP Client
-13. Pipes
-14. Observables and RxJS
-15. Angular CLI
-16. Testing in Angular
-17. Deployment
-
----
-
 ## 1. Introduction to Angular
 
 **Angular** is a platform and framework for building client-side applications using HTML, CSS, and JavaScript/TypeScript. Angular is developed and maintained by Google and is widely used for building single-page applications (SPAs).
@@ -185,7 +162,7 @@ import { MyComponent } from './my-component/my-component.component';
 export class AppModule { }
 ```
 
-**BrowserModule**
+#### BrowserModule
 
 In simple words, the `BrowserModule` in Angular is like the basic toolkit that Angular needs to run an application in a web browser. It provides essential features and services that make your Angular app work correctly in a browser.
 
