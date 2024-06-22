@@ -162,7 +162,7 @@ import { MyComponent } from './my-component/my-component.component';
 export class AppModule { }
 ```
 
-#### BrowserModule
+### BrowserModule
 
 In simple words, the `BrowserModule` in Angular is like the basic toolkit that Angular needs to run an application in a web browser. It provides essential features and services that make your Angular app work correctly in a browser.
 
