@@ -621,38 +621,140 @@ import { HttpClientModule } from '@angular/common/http';
 
 ## 13. Pipes
 
-Pipes transform data in your templates before displaying it.
+Pipes in Angular are a powerful feature that allow you to transform data in your templates. They can be used to format strings, dates, currencies, and more. Angular provides several built-in pipes, and you can also create your own custom pipes.
 
-### Example: Using Built-in Pipes
+### Using Built-in Pipes
+
+Angular includes a set of built-in pipes that cover common data transformations. Here are a few examples:
+
+1. **DatePipe**: Formats a date value according to locale rules.
+   ```html
+   {{ today | date }} <!-- Default date format -->
+   {{ today | date:'shortDate' }} <!-- Short date format -->
+   ```
+
+2. **UpperCasePipe**: Transforms text to uppercase.
+   ```html
+   {{ 'hello' | uppercase }} <!-- Outputs: HELLO -->
+   ```
+
+3. **LowerCasePipe**: Transforms text to lowercase.
+   ```html
+   {{ 'HELLO' | lowercase }} <!-- Outputs: hello -->
+   ```
+
+4. **CurrencyPipe**: Formats a number as currency.
+   ```html
+   {{ 1234.56 | currency }} <!-- Outputs: $1,234.56 -->
+   {{ 1234.56 | currency:'EUR' }} <!-- Outputs: €1,234.56 -->
+   ```
+
+5. **PercentPipe**: Formats a number as a percentage.
+   ```html
+   {{ 0.25 | percent }} <!-- Outputs: 25% -->
+   ```
+
+6. **DecimalPipe**: Formats a number with decimal points.
+   ```html
+   {{ 1234.567 | number:'1.2-2' }} <!-- Outputs: 1,234.57 -->
+   ```
+
+### Custom Pipes
+
+You can create your own custom pipes when the built-in ones do not meet your needs. Here’s how you can create a custom pipe in Angular.
+
+1. **Generate a Custom Pipe**:
+   You can generate a pipe using the Angular CLI:
+   ```bash
+   ng generate pipe custom
+   ```
+
+   This command will create a new pipe file with the necessary boilerplate code.
+
+2. **Implement the Pipe Logic**:
+   Open the generated pipe file and implement the transformation logic. For example, let's create a custom pipe that reverses a string.
+
+   ```typescript
+   import { Pipe, PipeTransform } from '@angular/core';
+
+   @Pipe({
+     name: 'reverse'
+   })
+   export class ReversePipe implements PipeTransform {
+     transform(value: string): string {
+       return value.split('').reverse().join('');
+     }
+   }
+   ```
+
+3. **Register the Pipe**:
+   Ensure the pipe is declared in the appropriate module.
+
+   ```typescript
+   import { NgModule } from '@angular/core';
+   import { BrowserModule } from '@angular/platform-browser';
+   import { AppComponent } from './app.component';
+   import { ReversePipe } from './reverse.pipe';
+
+   @NgModule({
+     declarations: [
+       AppComponent,
+       ReversePipe
+     ],
+     imports: [
+       BrowserModule
+     ],
+     providers: [],
+     bootstrap: [AppComponent]
+   })
+   export class AppModule { }
+   ```
+
+4. **Use the Custom Pipe in a Template**:
+   Use your custom pipe in the template just like any other pipe.
+
+   ```html
+   {{ 'hello' | reverse }} <!-- Outputs: olleh -->
+   ```
+
+### Pipe Parameters
+
+Pipes can also take arguments to customize their behavior. For instance, the `slice` pipe can be used to create a substring.
 
 ```html
-<p>{{ today | date }}</p>
-<p>{{ message | uppercase }}</p>
+{{ 'Hello, world!' | slice:7:12 }} <!-- Outputs: world -->
 ```
 
-### Creating Custom Pipes
+You can also add parameters to custom pipes:
 
-Create a custom pipe:
 ```typescript
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'customPipe'
+  name: 'exclaim'
 })
-export class CustomPipe implements PipeTransform {
-  transform(value: any, args?: any): any {
-    // Transform logic here
-    return transformedValue;
+export class ExclaimPipe implements PipeTransform {
+  transform(value: string, times: number): string {
+    return value + '!'.repeat(times);
   }
 }
 ```
 
-Use the custom pipe in your template:
 ```html
-<p>{{ data | customPipe }}</p>
+{{ 'hello' | exclaim:3 }} <!-- Outputs: hello!!! -->
 ```
 
----
+### Chaining Pipes
+
+You can chain multiple pipes together to perform complex data transformations:
+
+```html
+{{ 1234.567 | number:'1.0-0' | currency:'USD' }} <!-- Outputs: $1,235 -->
+```
+
+### Summary
+
+Pipes in Angular are a powerful tool for transforming data directly in your templates. You can use built-in pipes for common transformations, create custom pipes for specific needs, pass parameters to customize their behavior, and chain multiple pipes together for complex transformations. This makes managing and displaying data in Angular applications efficient and effective.
 
 ## 14. Observables and RxJS
 
