@@ -2,9 +2,9 @@
 
 ## 1. Introduction to Angular
 
-**Angular** is a platform and framework for building client-side applications using HTML, CSS, and JavaScript/TypeScript. Angular is developed and maintained by Google and is widely used for building single-page applications (SPAs).
+**Angular** is a platform and framework for building client-side applications using HTML, CSS, and JavaScript/TypeScript. Angular is developed and maintained by Google and is widely used for building single-page applications (SPAs). It is built entirely using typescript.
 
-### Key Features:
+**Key Features:**
 - **Component-Based Architecture**: Everything in Angular is a component.
 - **Data Binding**: Synchronizes data between the model and the view.
 - **Dependency Injection**: Efficiently manages service dependencies.
