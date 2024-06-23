@@ -835,22 +835,3 @@ Use tools like Jasmine and Karma for unit testing Angular components, services, 
 Use Protractor for end-to-end testing of Angular applications.
 
 ---
-
-## 17. Deployment
-
-Deploying Angular applications involves building the application and hosting it on a web server.
-
-### Build the Application
-
-Generate a production build of your application:
-```bash
-ng build --prod
-```
-
-### Deployment Options
-
-- **Static Hosting**: Host on platforms like Netlify, Vercel, or GitHub Pages.
-- **Cloud Hosting**: Use services like AWS, Azure, or Google Cloud.
-- **Containerization**: Deploy as a Docker container.
-
----
