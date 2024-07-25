@@ -719,8 +719,29 @@ You can create your own custom pipes when the built-in ones do not meet your nee
 
 ### Pipe Parameters
 
-Pipes can also take arguments to customize their behavior. For instance, the `slice` pipe can be used to create a substring.
+parameterized pipe is a type of pipe that can accept one or more parameters to customize its behavior. Pipes are a way to transform data in templates, and parameterized pipes provide additional flexibility by allowing you to pass arguments to the pipe.
 
+A parameterized pipe is used by adding a colon (:) followed by the parameter value(s) after the pipe name. Multiple parameters can be separated by colons.
+
+-parameterized pipe is a type of pipe that can accept one or more parameters to customize its behavior. Pipes are a way to transform data in templates, and parameterized pipes provide additional flexibility by allowing you to pass arguments to the pipe.
+-A parameterized pipe is used by adding a colon (:) followed by the parameter value(s) after the pipe name. Multiple parameters can be separated by colons.
+
+```html
+{{ 'Hello, world!' | slice:7:12 }} <!-- Outputs: world -->
+```
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-date-example',
+  template: `<p>{{ today | date:'fullDate' }}</p>`
+})
+export class DateExampleComponent {
+  today: number = Date.now();
+}
+```
+-In this example, the date pipe is used with the parameter 'fullDate', which tells Angular to format the date as a full date string.
 ```html
 {{ 'Hello, world!' | slice:7:12 }} <!-- Outputs: world -->
 ```
@@ -746,11 +767,20 @@ export class ExclaimPipe implements PipeTransform {
 
 ### Chaining Pipes
 
-You can chain multiple pipes together to perform complex data transformations:
+You can chain pipes together in potentially useful combinations as per the needs. Let's take a birthday property which uses date pipe(along with parameter) and uppercase pipes as below
 
-```html
-{{ 1234.567 | number:'1.0-0' | currency:'USD' }} <!-- Outputs: $1,235 -->
-```
+    ```typescript
+    import { Component } from '@angular/core';
+
+            @Component({
+              selector: 'app-birthday',
+              template: `<p>Birthday is {{  birthday | date:'fullDate' | uppercase}} </p>` // THURSDAY, JUNE 18, 1987
+            })
+            export class BirthdayComponent {
+              birthday = new Date(1987, 6, 18);
+            }
+
+    ```
 
 ### Summary
 
